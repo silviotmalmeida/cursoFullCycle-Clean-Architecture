@@ -1,0 +1,21 @@
+para instalar o typescript utiliza-se: npm i typescript --save-dev;
+
+para iniciar o projeto typescript utiliza-se: npx tsc --init
+
+para compilar o projeto typescript utiliza-se: npx tsc;
+
+para instalar o tslint utiliza-se: npm i tslint --save-dev;
+
+para iniciar o tslint utiliza-se: npx tslint --init;
+
+para instalar o jest utiliza-se: npm i -D jest @types/jest ts-node --save-dev;
+
+para instalar o swc utiliza-se: npm i -D @swc/jest @swc/cli @swc/core --save-dev;
+
+para iniciar o jest utiliza-se: npx jest --init;
+
+para instalar o uuid utiliza-se: npm i uuid @types/uuid;
+
+para instalar o sequelize utiliza-se: npm i sequelize reflect-metadata sequelize-typescript;
+
+para instalar o sqlite utiliza-se: npm i sqlite3;
