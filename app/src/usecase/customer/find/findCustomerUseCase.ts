@@ -7,11 +7,12 @@ export default class FindCustomerUseCase {
   // definindo os atributos
   private customerRepository: CustomerRepositoryInterface;
 
+  // definindo o construtor com os atributos mínimos necessários
   constructor(customerRepository: CustomerRepositoryInterface) {
     this.customerRepository = customerRepository;
   }
 
-  // definindo o construtor com os atributos mínimos necessários
+  // definindo o método de execução do usecase
   async execute(input: InputFindCustomerDto): Promise<OutputFindCustomerDto> {
     // consultando no db, a partir dos dados do inputDto, utilizando os métodos do repository
     const customer = await this.customerRepository.find(input.id);

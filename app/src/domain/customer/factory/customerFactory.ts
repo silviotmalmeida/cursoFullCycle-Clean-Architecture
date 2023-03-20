@@ -6,7 +6,6 @@ import EventDispatcher from "../../shared/event/eventDispatcher";
 
 // definindo os atributos mínimos a serem passados para a factory
 interface CustomerFactoryProps {
-  id: string;
   name: string;
   street?: string;
   number?: number;
@@ -19,12 +18,12 @@ interface CustomerFactoryProps {
 export default class CustomerFactory {
   // método para criar sem address, sem eventDispatcher
   public static create(props: CustomerFactoryProps): Customer {
-    return new Customer(props.id, props.name);
+    return new Customer(uuid(), props.name);
   }
 
   // método para criar com address, sem eventDispatcher
   public static createWithAddress(props: CustomerFactoryProps): Customer {
-    const customer = new Customer(props.id, props.name);
+    const customer = new Customer(uuid(), props.name);
     const address = new Address(
       props.street,
       props.number,
@@ -43,7 +42,7 @@ export default class CustomerFactory {
     if (props.eventDispatcher === undefined) {
       throw new Error("EventDispatcher cannot be undefined");
     }
-    return new Customer(props.id, props.name, props.eventDispatcher);
+    return new Customer(uuid(), props.name, props.eventDispatcher);
   }
 
   // método para criar com address, com eventDispatcher
@@ -55,7 +54,7 @@ export default class CustomerFactory {
       throw new Error("EventDispatcher cannot be undefined");
     }
 
-    const customer = new Customer(props.id, props.name, props.eventDispatcher);
+    const customer = new Customer(uuid(), props.name, props.eventDispatcher);
     const address = new Address(
       props.street,
       props.number,

@@ -10,7 +10,6 @@ describe("Customer factory unit test", () => {
   it("should create a customer, without event dispatcher", () => {
     // definindo as props de entrada
     const customerProps = {
-      id: uuid(),
       name: "Customer 1",
     };
 
@@ -18,7 +17,7 @@ describe("Customer factory unit test", () => {
     const customer = CustomerFactory.create(customerProps);
 
     // verificando os atributos
-    expect(customer.id).toEqual(customerProps.id);
+    expect(customer.id).toBeDefined;
     expect(customer.name).toEqual(customerProps.name);
     expect(customer.address).toBeUndefined();
     expect(customer.eventDispatcher).toBeUndefined();
@@ -28,7 +27,6 @@ describe("Customer factory unit test", () => {
   it("should create a customer with an address, without event dispatcher", () => {
     // definindo as props de entrada
     const customerProps = {
-      id: uuid(),
       name: "Customer 1",
       street: "Street 1",
       number: 123,
@@ -40,7 +38,7 @@ describe("Customer factory unit test", () => {
     const customer = CustomerFactory.createWithAddress(customerProps);
 
     // verificando os atributos
-    expect(customer.id).toEqual(customerProps.id);
+    expect(customer.id).toBeDefined;
     expect(customer.name).toEqual(customerProps.name);
     expect(customer.address.street).toEqual(customerProps.street);
     expect(customer.address.number).toEqual(customerProps.number);
@@ -56,7 +54,6 @@ describe("Customer factory unit test", () => {
 
     // definindo as props de entrada
     const customerProps = {
-      id: uuid(),
       name: "Customer 1",
       eventDispatcher: eventDispatcher,
     };
@@ -65,7 +62,7 @@ describe("Customer factory unit test", () => {
     const customer = CustomerFactory.createWithEventDispatcher(customerProps);
 
     // verificando os atributos
-    expect(customer.id).toEqual(customerProps.id);
+    expect(customer.id).toBeDefined;
     expect(customer.name).toEqual(customerProps.name);
     expect(customer.address).toBeUndefined();
     expect(customer.eventDispatcher).toEqual(customerProps.eventDispatcher);
@@ -75,7 +72,6 @@ describe("Customer factory unit test", () => {
   it("should throw error when trying to use createWithEventDispatcher() without eventDispatcher", () => {
     expect(() => {
       const customerProps = {
-        id: uuid(),
         name: "Customer 1",
       };
       const customer = CustomerFactory.createWithEventDispatcher(customerProps);
@@ -89,7 +85,6 @@ describe("Customer factory unit test", () => {
 
     // definindo as props de entrada
     const customerProps = {
-      id: uuid(),
       name: "Customer 1",
       street: "Street 1",
       number: 123,
@@ -103,7 +98,7 @@ describe("Customer factory unit test", () => {
       CustomerFactory.createWithAddressAndEventDispatcher(customerProps);
 
     // verificando os atributos
-    expect(customer.id).toEqual(customerProps.id);
+    expect(customer.id).toBeDefined;
     expect(customer.name).toEqual(customerProps.name);
     expect(customer.address.street).toEqual(customerProps.street);
     expect(customer.address.number).toEqual(customerProps.number);
@@ -116,7 +111,6 @@ describe("Customer factory unit test", () => {
   it("should throw error when trying to use createWithAddressAndEventDispatcher() without eventDispatcher", () => {
     expect(() => {
       const customerProps = {
-        id: uuid(),
         name: "Customer 1",
         street: "Street 1",
         number: 123,

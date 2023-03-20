@@ -4,9 +4,9 @@ import Customer from "../../../domain/customer/entity/customer";
 import Address from "../../../domain/customer/value-object/address";
 import CustomerModel from "../../../infrastructure/customer/repository/sequelize/customerModel";
 import CustomerRepository from "../../../infrastructure/customer/repository/sequelize/customerRepository";
-import FindCustomerUseCase from "./findCustomerUsecase";
+import FindCustomerUseCase from "./findCustomerUseCase";
 
-// criando a suíte de testes do usecase
+// criando a suíte de testes do usecase, com integração
 describe("Test find customer use case", () => {
   // inicializando a variável do orm
   let sequelize: Sequelize;
