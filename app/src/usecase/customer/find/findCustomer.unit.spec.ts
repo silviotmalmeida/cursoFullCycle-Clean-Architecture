@@ -28,12 +28,12 @@ describe("Unit Test find customer use case", () => {
     // iniciando o usecase
     const usecase = new FindCustomerUseCase(customerRepository);
 
-    // definindo o formato dos dados de entrada
+    // definindo os dados de input
     const input = {
       id: "123",
     };
 
-    // definindo o formato dos dados de saída
+    // definindo o formato dos output esperado
     const output = {
       id: "123",
       name: "John",
@@ -63,7 +63,7 @@ describe("Unit Test find customer use case", () => {
     // iniciando o usecase
     const usecase = new FindCustomerUseCase(customerRepository);
 
-    // definindo o formato dos dados de entrada
+    // definindo os dados de input
     const input = {
       id: "123",
     };

@@ -1,7 +1,5 @@
 // dependências
-import { v4 as uuid } from "uuid";
 import CustomerFactory from "./customerFactory";
-import Address from "../value-object/address";
 import EventDispatcher from "../../shared/event/eventDispatcher";
 
 // criando a suíte de testes unitários

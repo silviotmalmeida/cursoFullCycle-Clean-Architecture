@@ -1,7 +1,7 @@
 // dependências
 import CreateCustomerUseCase from "./createCustomerUseCase";
 
-// definindo o formato dos dados de entrada
+// definindo os dados de input do usecase
 const input = {
   name: "John",
   address: {
