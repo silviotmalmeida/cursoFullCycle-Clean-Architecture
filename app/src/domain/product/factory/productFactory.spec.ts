@@ -1,5 +1,4 @@
 // dependências
-import { v4 as uuid } from "uuid";
 import ProductFactory from "./productFactory";
 
 // criando a suíte de testes unitários
@@ -8,7 +7,6 @@ describe("Product factory unit test", () => {
   it("should create a proct type a", () => {
     // definindo as props de entrada
     const productProps = {
-      id: uuid(),
       name: "Product A",
       price: 1,
       type: "a",
@@ -18,7 +16,7 @@ describe("Product factory unit test", () => {
     const product = ProductFactory.create(productProps);
 
     // verificando os atributos
-    expect(product.id).toEqual(productProps.id);
+    expect(product.id).toBeDefined;
     expect(product.name).toEqual(productProps.name);
     expect(product.price).toEqual(productProps.price);
     expect(product.constructor.name).toBe("Product");
@@ -28,7 +26,6 @@ describe("Product factory unit test", () => {
   it("should create a proct type b", () => {
     // definindo as props de entrada
     const productProps = {
-      id: uuid(),
       name: "Product B",
       price: 1,
       type: "b",
@@ -38,7 +35,7 @@ describe("Product factory unit test", () => {
     const product = ProductFactory.create(productProps);
 
     // verificando os atributos
-    expect(product.id).toEqual(productProps.id);
+    expect(product.id).toBeDefined;
     expect(product.name).toEqual(productProps.name);
     expect(product.price).toEqual(productProps.price * 2);
     expect(product.constructor.name).toBe("ProductB");
@@ -48,7 +45,6 @@ describe("Product factory unit test", () => {
   it("should throw an error when product type is not supported", () => {
     expect(() => {
       const productProps = {
-        id: uuid(),
         name: "Product B",
         price: 1,
         type: "c",

@@ -1,12 +1,13 @@
 // dependências
 import Product from "../../../../domain/product/entity/product";
+import ProductInterface from "../../../../domain/product/entity/productInterface";
 import ProductRepositoryInterface from "../../../../domain/product/repository/productRepositoryInterface";
 import ProductModel from "./productModel";
 
 // classe de repositório do orm, implementando a interface de repositório definida no domain
 export default class ProductRepository implements ProductRepositoryInterface {
   // método de criação
-  async create(entity: Product): Promise<void> {
+  async create(entity: ProductInterface): Promise<void> {
     // utiliza o método default do orm
     await ProductModel.create({
       id: entity.id,
@@ -16,7 +17,7 @@ export default class ProductRepository implements ProductRepositoryInterface {
   }
 
   // método de atualização
-  async update(entity: Product): Promise<void> {
+  async update(entity: ProductInterface): Promise<void> {
     // utiliza o método default do orm
     await ProductModel.update(
       {
@@ -32,13 +33,13 @@ export default class ProductRepository implements ProductRepositoryInterface {
   }
 
   // método de busca por id
-  async find(id: string): Promise<Product> {
+  async find(id: string): Promise<ProductInterface> {
     // obtendo os dados do bd
     let productModel;
     // tratamento de exceções
     try {
       // utiliza o método default do orm
-      productModel = await ProductModel.findOne({ where: { id: id }, });
+      productModel = await ProductModel.findOne({ where: { id: id } });
     } catch (error) {
       // em caso de inexistência, lança uma exceção
       throw new Error("Product not found");
@@ -48,7 +49,7 @@ export default class ProductRepository implements ProductRepositoryInterface {
   }
 
   // método de busca
-  async findAll(): Promise<Product[]> {
+  async findAll(): Promise<ProductInterface[]> {
     // utiliza o método default do orm
     const productModels = await ProductModel.findAll();
 
