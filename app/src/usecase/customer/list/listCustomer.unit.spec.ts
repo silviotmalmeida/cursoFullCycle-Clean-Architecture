@@ -33,6 +33,9 @@ const MockRepository = () => {
   };
 };
 
+// definindo os dados de input do usecase
+const input = {};
+
 // suíte de testes do usecase, sem integração
 describe("Unit test for listing customer use case", () => {
   // se for executada uma busca geral, os atributos devem ser iguais aos dos objetos de origem
@@ -43,7 +46,7 @@ describe("Unit test for listing customer use case", () => {
     const useCase = new ListCustomerUseCase(repository);
 
     // buscando no db utilizando os métodos do usecase
-    const output = await useCase.execute({});
+    const output = await useCase.execute(input);
 
     // comparando-se os dados
     expect(output.customers.length).toBe(2);

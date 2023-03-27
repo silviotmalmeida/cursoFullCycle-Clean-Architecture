@@ -1,5 +1,4 @@
 // dependências
-import ProductFactory from "../../../domain/product/factory/productFactory";
 import ProductRepositoryInterface from "../../../domain/product/repository/productRepositoryInterface";
 import { InputFindProductDto, OutputFindProductDto } from "./findProductDto";
 
