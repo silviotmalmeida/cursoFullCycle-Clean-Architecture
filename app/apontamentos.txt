@@ -19,3 +19,11 @@ para instalar o uuid utiliza-se: npm i uuid @types/uuid;
 para instalar o sequelize utiliza-se: npm i sequelize reflect-metadata sequelize-typescript;
 
 para instalar o sqlite utiliza-se: npm i sqlite3;
+
+para instalar o express utiliza-se: npm i express @types/express
+
+para instalar o dotenv utiliza-se: npm i dotenv
+
+para instalar o nodemon utiliza-se: npm i nodemon
+
+para instalar o supertest utiliza-se: npm i -D supertest @types/supertest
