@@ -12,14 +12,21 @@ describe("Customer unit tests", () => {
   it("should throw error when id is empty", () => {
     expect(() => {
       const customer = new Customer("", "John");
-    }).toThrowError("Id is required");
+    }).toThrowError("customer: Id is required");
   });
 
   // se um customer é criado sem name, é lançado um erro padrão
   it("should throw error when name is empty", () => {
     expect(() => {
       const customer = new Customer("123", "");
-    }).toThrowError("Name is required");
+    }).toThrowError("customer: Name is required");
+  });
+
+  // se um customer é criado sem id e name, é lançado um erro padrão
+  it("should throw error when id and name is empty", () => {
+    expect(() => {
+      const customer = new Customer("", "");
+    }).toThrowError("customer: Id is required,customer: Name is required");
   });
 
   // o método changename() deve ser capaz de atualizar somente o name

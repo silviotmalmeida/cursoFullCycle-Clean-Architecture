@@ -1,13 +1,14 @@
 // dependências
+import AbstractEntity from "../../shared/entity/abstractEntity";
 import EventDispatcher from "../../shared/event/eventDispatcher";
+import NotificationError from "../../shared/notification/notification.error";
 import CustomerAddressChangedEvent from "../event/customerAddressChangedEvent";
 import CustomerCreatedEvent from "../event/customerCreatedEvent";
 import Address from "../value-object/address";
 
-// classe de domínio
-export default class Customer {
+// classe de domínio, herda de AbstractEntity
+export default class Customer extends AbstractEntity {
   // definindo os atributos
-  private _id: string;
   private _name: string;
   private _eventDispatcher: EventDispatcher;
   private _address!: Address; // vinculado ao objeto de valor Address
@@ -16,6 +17,7 @@ export default class Customer {
 
   // definindo o construtor com os atributos mínimos necessários
   constructor(id: string, name: string, eventDispatcher?: EventDispatcher) {
+    super();
     this._id = id;
     this._name = name;
     if (typeof eventDispatcher !== "undefined") {
@@ -32,10 +34,6 @@ export default class Customer {
   }
 
   // getters (somente necessários)
-  get id(): string {
-    return this._id;
-  }
-
   get name(): string {
     return this._name;
   }
@@ -53,14 +51,28 @@ export default class Customer {
   }
 
   // método de autovalidação de consistência
-  validate() {
+  validate(): boolean {
     // os atributos são obrigatórios
+    // populando o bojeto de notification
     if (this._id.length === 0) {
-      throw new Error("Id is required");
+      this.notification.addError({
+        context: "customer",
+        message: "Id is required",
+      });
     }
     if (this._name.length === 0) {
-      throw new Error("Name is required");
+      this.notification.addError({
+        context: "customer",
+        message: "Name is required",
+      });
     }
+
+    // se foram encontrados erros, lança exceção
+    if (this.notification.hasErrors()) {
+      throw new NotificationError(this.notification.getErrors());
+    }
+
+    return true;
   }
 
   // método para alteração do name

@@ -1,15 +1,20 @@
 // dependências
+import AbstractEntity from "../../shared/entity/abstractEntity";
+import NotificationError from "../../shared/notification/notification.error";
 import ProductInterface from "./productInterface";
 
-// classe de domínio, implementando a interface
-export default class ProductB implements ProductInterface {
+// classe de domínio, herda de AbstractEntity e implementa a interface
+export default class ProductB
+  extends AbstractEntity
+  implements ProductInterface
+{
   // definindo os atributos
-  private _id: string;
   private _name: string;
   private _price: number;
 
   // definindo o construtor com os atributos mínimos necessários
   constructor(id: string, name: string, price: number) {
+    super();
     this._id = id;
     this._name = name;
     this._price = price * 2;
@@ -19,10 +24,6 @@ export default class ProductB implements ProductInterface {
   }
 
   // getters (somente necessários)
-  get id(): string {
-    return this._id;
-  }
-  
   get name(): string {
     return this._name;
   }
@@ -33,15 +34,32 @@ export default class ProductB implements ProductInterface {
 
   // método de autovalidação de consistência
   validate(): boolean {
+    // os atributos são obrigatórios
+    // populando o bojeto de notification
     if (this._id.length === 0) {
-      throw new Error("Id is required");
+      this.notification.addError({
+        context: "product",
+        message: "Id is required",
+      });
     }
     if (this._name.length === 0) {
-      throw new Error("Name is required");
+      this.notification.addError({
+        context: "product",
+        message: "Name is required",
+      });
     }
     if (this._price <= 0) {
-      throw new Error("Price must be greater than zero");
+      this.notification.addError({
+        context: "product",
+        message: "Price must be greater than zero",
+      });
     }
+
+    // se foram encontrados erros, lança exceção
+    if (this.notification.hasErrors()) {
+      throw new NotificationError(this.notification.getErrors());
+    }
+
     return true;
   }
 

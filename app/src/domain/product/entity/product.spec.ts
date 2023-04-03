@@ -7,25 +7,32 @@ describe("Product unit tests", () => {
   it("should throw error when id is empty", () => {
     expect(() => {
       const product = new Product("", "Product 1", 100);
-    }).toThrowError("Id is required");
+    }).toThrowError("product: Id is required");
   });
 
   // se um product é criado sem name, é lançado um erro padrão
   it("should throw error when name is empty", () => {
     expect(() => {
       const product = new Product("123", "", 100);
-    }).toThrowError("Name is required");
+    }).toThrowError("product: Name is required");
+  });
+
+  // se um product é criado sem id e name, é lançado um erro padrão
+  it("should throw error when id and name is empty", () => {
+    expect(() => {
+      const product = new Product("", "", 100);
+    }).toThrowError("product: Id is required,product: Name is required");
   });
 
   // se um orderItem é criado com price inferior ou igual a 0, é lançado um erro padrão
   it("should throw error when price is less than zero", () => {
     expect(() => {
       const product = new Product("123", "Name", 0);
-    }).toThrowError("Price must be greater than zero");
+    }).toThrowError("product: Price must be greater than zero");
 
     expect(() => {
       const product = new Product("123", "Name", -1);
-    }).toThrowError("Price must be greater than zero");
+    }).toThrowError("product: Price must be greater than zero");
   });
 
   // o método changeName() deve ser capaz de atualizar somente o name
