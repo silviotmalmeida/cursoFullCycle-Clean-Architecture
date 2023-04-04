@@ -27,3 +27,5 @@ para instalar o dotenv utiliza-se: npm i dotenv
 para instalar o nodemon utiliza-se: npm i nodemon
 
 para instalar o supertest utiliza-se: npm i -D supertest @types/supertest
+
+para instalar o yup utiliza-se: npm i yup

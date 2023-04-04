@@ -1,5 +1,5 @@
 // dependências
-import EventDispatcher from "../../shared/event/eventDispatcher";
+import EventDispatcher from "../../@shared/event/eventDispatcher";
 import SendConsoleLog1Handler from "../event/handler/sendConsoleLog1Handler";
 import SendConsoleLog2Handler from "../event/handler/sendConsoleLog2Handler";
 import SendConsoleLogHandler from "../event/handler/sendConsoleLogHandler";

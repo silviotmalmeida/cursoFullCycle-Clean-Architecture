@@ -1,9 +1,10 @@
 // dependências
-import AbstractEntity from "../../shared/entity/abstractEntity";
-import EventDispatcher from "../../shared/event/eventDispatcher";
-import NotificationError from "../../shared/notification/notification.error";
+import AbstractEntity from "../../@shared/entity/abstractEntity";
+import EventDispatcher from "../../@shared/event/eventDispatcher";
+import NotificationError from "../../@shared/notification/notification.error";
 import CustomerAddressChangedEvent from "../event/customerAddressChangedEvent";
 import CustomerCreatedEvent from "../event/customerCreatedEvent";
+import CustomerValidatorFactory from "../factory/customerValidatorFactory";
 import Address from "../value-object/address";
 
 // classe de domínio, herda de AbstractEntity
@@ -52,20 +53,8 @@ export default class Customer extends AbstractEntity {
 
   // método de autovalidação de consistência
   validate(): boolean {
-    // os atributos são obrigatórios
-    // populando o bojeto de notification
-    if (this._id.length === 0) {
-      this.notification.addError({
-        context: "customer",
-        message: "Id is required",
-      });
-    }
-    if (this._name.length === 0) {
-      this.notification.addError({
-        context: "customer",
-        message: "Name is required",
-      });
-    }
+    // criando o validator da entidade
+    CustomerValidatorFactory.create().validate(this);
 
     // se foram encontrados erros, lança exceção
     if (this.notification.hasErrors()) {

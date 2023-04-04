@@ -1,6 +1,6 @@
 // dependências
 import CustomerFactory from "./customerFactory";
-import EventDispatcher from "../../shared/event/eventDispatcher";
+import EventDispatcher from "../../@shared/event/eventDispatcher";
 
 // criando a suíte de testes unitários
 describe("Customer factory unit test", () => {

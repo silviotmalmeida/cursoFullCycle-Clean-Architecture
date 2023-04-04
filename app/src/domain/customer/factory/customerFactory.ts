@@ -2,7 +2,7 @@
 import Customer from "../entity/customer";
 import { v4 as uuid } from "uuid";
 import Address from "../value-object/address";
-import EventDispatcher from "../../shared/event/eventDispatcher";
+import EventDispatcher from "../../@shared/event/eventDispatcher";
 
 // definindo os atributos mínimos a serem passados para a factory
 interface CustomerFactoryProps {
