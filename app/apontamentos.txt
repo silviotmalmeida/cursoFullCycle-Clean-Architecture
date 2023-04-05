@@ -29,3 +29,5 @@ para instalar o nodemon utiliza-se: npm i nodemon
 para instalar o supertest utiliza-se: npm i -D supertest @types/supertest
 
 para instalar o yup utiliza-se: npm i yup
+
+para instalar o jstoxml utiliza-se: npm i -D jstoxml @types/jstoxml
